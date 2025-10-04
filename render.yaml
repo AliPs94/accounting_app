@@ -2,13 +2,10 @@ services:
   # Django Backend API
   - type: web
     name: accounting-backend
-    env: python
+    runtime: python
     region: frankfurt
     plan: free
-    buildCommand: |
-      pip install -r requirements.txt
-      python manage.py collectstatic --noinput
-      python manage.py migrate
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate
     startCommand: gunicorn accounting_project.wsgi:application
     envVars:
       - key: PYTHON_VERSION
@@ -22,20 +19,5 @@ services:
       - key: CORS_ORIGINS
         sync: false
       - key: DATABASE_URL
-        sync: false
-    
-  # Vue.js Frontend (Static Site)
-  - type: web
-    name: accounting-frontend
-    env: static
-    buildCommand: |
-      cd frontend
-      npm install
-      npm run build
-    staticPublishPath: ./frontend/dist
-    envVars:
-      - key: NODE_VERSION
-        value: 18.17.0
-      - key: VITE_API_URL
         sync: false
 
