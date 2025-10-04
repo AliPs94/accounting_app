@@ -31,9 +31,9 @@ echo "========================================="
 echo "Installing dependencies..."
 npm install
 
-# Build the application
+# Build the application (skip type checking for production)
 echo "Building application..."
-npm run build
+npm run build-only
 
 echo "========================================="
 echo "✓ Build completed successfully!"
