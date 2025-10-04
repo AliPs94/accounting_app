@@ -1,0 +1,176 @@
+/* RTL (Right-to-Left) Styles for Arabic */
+
+/* Base RTL adjustments */
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] .navigation {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .nav-links {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .nav-user {
+  flex-direction: row-reverse;
+}
+
+/* Form elements RTL */
+[dir="rtl"] .form-group label {
+  text-align: right;
+}
+
+[dir="rtl"] .form-group input,
+[dir="rtl"] .form-group select,
+[dir="rtl"] .form-group textarea {
+  text-align: right;
+}
+
+/* Table RTL adjustments */
+[dir="rtl"] .table th,
+[dir="rtl"] .table td {
+  text-align: right;
+}
+
+[dir="rtl"] .table .amount {
+  text-align: left; /* Keep numbers left-aligned for readability */
+}
+
+/* Button groups RTL */
+[dir="rtl"] .form-actions {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .modal-actions {
+  flex-direction: row-reverse;
+}
+
+/* Card layouts RTL */
+[dir="rtl"] .card {
+  text-align: right;
+}
+
+/* Navigation RTL */
+[dir="rtl"] .nav-link {
+  margin-left: 0;
+  margin-right: 20px;
+}
+
+[dir="rtl"] .nav-link:last-child {
+  margin-right: 0;
+}
+
+/* Dashboard cards RTL */
+[dir="rtl"] .dashboard-cards {
+  direction: rtl;
+}
+
+[dir="rtl"] .dashboard-card {
+  text-align: right;
+}
+
+/* Reports RTL */
+[dir="rtl"] .report-controls {
+  text-align: right;
+}
+
+[dir="rtl"] .controls-grid {
+  direction: rtl;
+}
+
+/* Balance summary RTL */
+[dir="rtl"] .balance-item {
+  flex-direction: row-reverse;
+}
+
+/* Transaction table RTL */
+[dir="rtl"] .transactions-table table {
+  direction: rtl;
+}
+
+[dir="rtl"] .transactions-table .amount {
+  text-align: left; /* Keep numbers left-aligned */
+}
+
+/* Account tree RTL */
+[dir="rtl"] .account-header {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .account-actions {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .account-children {
+  padding-right: 25px;
+  padding-left: 0;
+}
+
+/* Modal RTL */
+[dir="rtl"] .modal-content {
+  text-align: right;
+}
+
+[dir="rtl"] .modal-content h2 {
+  text-align: right;
+}
+
+/* Error and success messages RTL */
+[dir="rtl"] .error-message,
+[dir="rtl"] .success-message {
+  text-align: right;
+}
+
+/* Loading states RTL */
+[dir="rtl"] .loading {
+  text-align: right;
+}
+
+/* Empty states RTL */
+[dir="rtl"] .empty-state {
+  text-align: right;
+}
+
+/* Language switcher */
+.language-switcher {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 20px;
+}
+
+[dir="rtl"] .language-switcher {
+  margin-left: 0;
+  margin-right: 20px;
+}
+
+.language-switcher select {
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: white;
+  font-size: 14px;
+}
+
+[dir="rtl"] .language-switcher select {
+  text-align: right;
+}
+
+/* Responsive RTL adjustments */
+@media (max-width: 768px) {
+  [dir="rtl"] .controls-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  [dir="rtl"] .nav-links {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+  [dir="rtl"] .nav-link {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
