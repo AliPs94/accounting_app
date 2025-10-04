@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# Build script for Render.com frontend deployment
+
+set -e  # Exit on error
+
+echo "========================================="
+echo "Starting Render Build for Frontend"
+echo "========================================="
+
+# Check Node version
+echo "Node version: $(node --version)"
+echo "NPM version: $(npm --version)"
+echo "NODE_VERSION env var: ${NODE_VERSION:-not set}"
+
+# Verify Node version is at least 18
+NODE_MAJOR_VERSION=$(node --version | cut -d'.' -f1 | sed 's/v//')
+echo "Detected Node major version: $NODE_MAJOR_VERSION"
+
+if [ "$NODE_MAJOR_VERSION" -lt 18 ]; then
+    echo "ERROR: Node version must be 18 or higher!"
+    echo "Current version: $(node --version)"
+    echo "Please set NODE_VERSION=18.17.0 in environment variables"
+    exit 1
+fi
+
+echo "✓ Node version is compatible"
+echo "========================================="
+
+# Install dependencies
+echo "Installing dependencies..."
+npm install
+
+# Build the application
+echo "Building application..."
+npm run build
+
+echo "========================================="
+echo "✓ Build completed successfully!"
+echo "========================================="
+
