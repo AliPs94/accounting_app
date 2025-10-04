@@ -21,12 +21,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-onxnu^ay2hgdl-(ehx!5go7%@8o-l_l_)w)wv-g9z5p_-zqn84'
+SECRET_KEY = config('SECRET_KEY', default='django-insecure-onxnu^ay2hgdl-(ehx!5go7%@8o-l_l_)w)wv-g9z5p_-zqn84')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS configuration
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1').split(',')
+ALLOWED_HOSTS = [host.strip() for host in ALLOWED_HOSTS]  # Remove any whitespace
 
 
 # Application definition
@@ -175,11 +177,10 @@ SIMPLE_JWT = {
 }
 
 # CORS settings
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-]
+CORS_ORIGINS_STRING = config('CORS_ORIGINS', default='http://localhost:5173,http://127.0.0.1:5173')
+CORS_ALLOWED_ORIGINS = [origin.strip() for origin in CORS_ORIGINS_STRING.split(',')]
 
 CORS_ALLOW_CREDENTIALS = True
 
-CORS_ALLOW_ALL_ORIGINS = True  # Only for development
+# Only allow all origins in development
+CORS_ALLOW_ALL_ORIGINS = config('DEBUG', default=True, cast=bool)
