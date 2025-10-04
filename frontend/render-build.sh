@@ -12,14 +12,15 @@ echo "Node version: $(node --version)"
 echo "NPM version: $(npm --version)"
 echo "NODE_VERSION env var: ${NODE_VERSION:-not set}"
 
-# Verify Node version is at least 18
+# Verify Node version is at least 20
 NODE_MAJOR_VERSION=$(node --version | cut -d'.' -f1 | sed 's/v//')
 echo "Detected Node major version: $NODE_MAJOR_VERSION"
 
-if [ "$NODE_MAJOR_VERSION" -lt 18 ]; then
-    echo "ERROR: Node version must be 18 or higher!"
+if [ "$NODE_MAJOR_VERSION" -lt 20 ]; then
+    echo "ERROR: Node version must be 20 or higher!"
     echo "Current version: $(node --version)"
-    echo "Please set NODE_VERSION=18.17.0 in environment variables"
+    echo "Vite 7.x requires Node.js 20.19+ or 22.12+"
+    echo "Please set NODE_VERSION=20.19.0 in environment variables"
     exit 1
 fi
 
