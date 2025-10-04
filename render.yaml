@@ -28,12 +28,12 @@ services:
           property: connectionString
     
   # PostgreSQL Database
-  - type: pgsql
+  - type: pserv
     name: accounting-db
     region: oregon
     plan: free
     databaseName: accounting_db
-    user: accounting_user
+    databaseUser: accounting_user
     
   # Vue.js Frontend (Static Site)
   - type: web
